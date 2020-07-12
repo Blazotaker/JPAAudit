@@ -11,14 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
 public class User implements Serializable {
 
-	
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -27,11 +30,7 @@ public class User implements Serializable {
 	private String createdBy;
 	private Date updatedAt;
 	private String updatedBy;
-	
-	
-	
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
@@ -42,11 +41,7 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-
-
-
-
-	@Column(name="first_name", nullable = false)
+	@Column(name = "first_name", nullable = false)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -55,11 +50,7 @@ public class User implements Serializable {
 		this.firstName = firstName;
 	}
 
-
-
-
-	
-	@Column(name="last_name", nullable = false)
+	@Column(name = "last_name", nullable = false)
 	public String getLastName() {
 		return lastName;
 	}
@@ -68,11 +59,7 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
-
-
-
-
-	@Column(name="email_address", nullable = false)
+	@Column(name = "email_address", nullable = false)
 	public String getEmail() {
 		return email;
 	}
@@ -81,11 +68,8 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-
-
-
-
-	@Column(name="created_at", nullable=false)
+	@Column(name = "created_at", nullable = false)
+	@CreatedDate
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -94,11 +78,8 @@ public class User implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-
-
-
-
-	@Column(name="created_by", nullable=false)
+	@Column(name = "created_by", nullable = false)
+	@CreatedBy
 	public String getCreatedBy() {
 		return createdBy;
 	}
@@ -107,11 +88,8 @@ public class User implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-
-
-
-
-	@Column(name="updated_at", nullable=false)
+	@Column(name = "updated_at", nullable = false)
+	@LastModifiedDate
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
@@ -120,28 +98,18 @@ public class User implements Serializable {
 		this.updatedAt = updatedAt;
 	}
 
-
-
-
-
-	@Column(name="updated_by", nullable=false)
-	public String getUpdatedBy() {
+	@Column(name = "updated_by", nullable = false)
+	@LastModifiedBy
+	public String getUpdatedby() {
 		return updatedBy;
 	}
 
-	public void setUpdatedBy(String updatedBy) {
+	public void setUpdatedby(String updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-
-
-
+	 
 
 	private static final long serialVersionUID = 1L;
-	
+
 }
